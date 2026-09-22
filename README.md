@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="assets/arx-icon-mark.svg" width="120" alt="Arx OS logo">
+</p>
 # Arx OS
 
 **Secure Private Free**
