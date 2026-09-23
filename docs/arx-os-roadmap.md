@@ -124,7 +124,7 @@ Decisões já travadas:
 
 ## Fase 2 — Modo Servidor
 
-- Painel web (Flask, aproveitando a experiência que você já tem do [[filtro-dns-academico]] — gunicorn, systemd services)
+- Painel web (Flask, aproveitando experiência prévia do projeto com Flask/gunicorn/systemd services no filtro DNS acadêmico)
 - Módulos do painel:
   - Rede: interfaces, **VLANs (802.1Q)**, roteamento, **IP fixo configurável** (servidor não deve depender só de DHCP — precisa da opção de IP estático, já que outras máquinas apontam pra ele como referência fixa, ex: o próprio repositório apt)
   - Firewall (nftables) via UI
@@ -225,7 +225,7 @@ Duas opções reais em setembro de 2026:
 
 ### Tier 2 — Recompilar com flags extras (opcional, fase avançada — não bloqueia o MVP)
 - OpenSSH com defaults mais restritos (menos cifras, sem root login por senha) — **mas começa só configurando via `sshd_config`**, recompilar aqui só se precisar de algo que configuração não resolve
-- glibc/openssl — Debian já aplica PIE, RELRO, fortify e stack-protector por padrão via `dpkg-buildflags`; recompilar tem retorno baixo a menos que você queira patches bem específicos (ex: se decidir entrar em grsecurity/PaX RAP mais pra frente)
+- glibc/openssl — Debian já aplica PIE, RELRO, fortify e stack-protector por padrão via `dpkg-buildflags`; recompilar tem retorno baixo a menos que patches bem específicos sejam necessários (ex: entrada em grsecurity/PaX RAP mais pra frente)
 
 ### Tier 3 — Direto do Debian `main`, sem recompilar
 - Userland padrão: coreutils, bash, dbus, systemd (ou outro init, se preferir algo mais enxuto), iproute2 (VLAN 802.1Q já é nativo via `ip link add ... type vlan`), nftables, AppArmor (framework/binários), OpenSSH client/server, Xorg/Wayland + o DE escolhido (XFCE/LXQt)
